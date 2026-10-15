@@ -1,6 +1,8 @@
 # Compiler
 
-**Status:** intended design; no compiler is implemented yet.
+**Status:** initial subset implemented in [analysis](../../src/analyze.ts),
+[TypeScript checking](../../src/typecheck.ts), and [Swift generation](../../src/swift.ts).
+The typed intermediate representation is in [types](../../src/types.ts).
 
 The compiler runs under Node and emits Swift application logic and SwiftUI views.
 Use Svelte parsing and TypeScript analysis as front-end tools. Svelte's normal web
@@ -17,6 +19,9 @@ output is not the native backend.
 - Generate Swift state models, SwiftUI views, and native calls described by the
   [binding system](bindings.md). A small Swift library may provide shared behavior.
 - Pass generated output to the Apple toolchain for native compilation and validation.
+
+The initial CLI stops at source generation. Native compilation is currently a
+separate test step on macOS; it does not yet produce an application bundle.
 
 ## Semantic contract
 
@@ -37,6 +42,7 @@ then build and exercise representative apps on macOS with Xcode. Compare startup
 allocations, and UI updates with equivalent handwritten SwiftUI before making
 performance claims.
 
-Initial language coverage, reactivity details, intermediate representation schema,
-native support library contents, and package output format remain undecided.
-See [ADR 0001](../adr/0001-compile-to-swift.md).
+The [README](../../README.md) lists the implemented subset. Broader language
+semantics, a native support library, and application packaging remain open. See
+[ADR 0001](../adr/0001-compile-to-swift.md) and the
+[initial subset](../adr/0005-start-with-an-explicit-native-subset.md).

@@ -4,9 +4,10 @@ Svelocity lets developers author native Apple applications using Svelte and
 TypeScript. Swift and SwiftUI define the platform capabilities exposed to that
 authoring language. Native performance is the goal; measurements must establish it.
 
-**Status:** intended design. The repository currently has no compiler, native
-support library, language server, or application. Code and tests will establish
-what actually works. These notes describe boundaries, not an implementation spec.
+**Status:** a first compiler slice, CLI watcher, and language-server diagnostics
+are implemented. Native application hosts, routing, component composition, and
+broader language support remain planned. Code and tests establish actual support;
+these notes describe boundaries rather than an implementation spec.
 
 ```text
 Svelte + TypeScript + native API descriptions + route files
@@ -19,7 +20,7 @@ Svelte + TypeScript + native API descriptions + route files
                          |
                 Swift / SwiftUI generation
                          |
-          Apple toolchain + Swift support library
+              Apple toolchain (external)
 ```
 
 Node hosts compilation and build tools. Shipped application logic executes as
@@ -31,6 +32,7 @@ Swift, without a JavaScript engine. SwiftUI owns rendering and view updates.
 - [Routing](routing.md): folders, typed routes, and native presentation.
 - [ADRs](../adr/README.md): high-level decisions and their rationale.
 
-Still open: initial language coverage, binding format, modifier and binding syntax,
-tool versions, deployment targets, and native navigation presentation conventions.
-Decide these when implementation requires them, recording material choices in ADRs.
+The [initial subset decision](../adr/0005-start-with-an-explicit-native-subset.md)
+defines the first authoring contract. Still open: broader language semantics,
+external binding format, richer modifier and binding syntax, native extension
+modules, and navigation presentation. Record material choices in ADRs as needed.
