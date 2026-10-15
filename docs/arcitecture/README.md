@@ -5,8 +5,9 @@ TypeScript. Swift and SwiftUI define the platform capabilities exposed to that
 authoring language. Native performance is the goal; measurements must establish it.
 
 **Status:** a first compiler slice, CLI watcher, and language-server diagnostics
-are implemented. Native application hosts, routing, component composition, and
-broader language support remain planned. Code and tests establish actual support;
+are implemented. A native app/test harness is in the repository but still needs
+Apple-platform execution. Routing, component composition, and broader language
+support remain planned. Code and tests establish actual support;
 these notes describe boundaries rather than an implementation spec.
 
 ```text
@@ -30,6 +31,7 @@ Swift, without a JavaScript engine. SwiftUI owns rendering and view updates.
 - [Bindings](bindings.md): exposing Swift APIs and platform constraints.
 - [Language tooling](language.md): continuous analysis and editor feedback.
 - [Routing](routing.md): folders, typed routes, and native presentation.
+- [Native development](native.md): app hosts, build/run commands, and measurements.
 - [ADRs](../adr/README.md): high-level decisions and their rationale.
 - [Roadmap](../roadmap.md): proposed phases and completion criteria.
 

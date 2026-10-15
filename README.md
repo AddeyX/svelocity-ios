@@ -18,8 +18,26 @@ npm run svelocity -- check examples --watch
 
 `check` returns 1 for incompatible code and 2 for invalid commands or filesystem
 failures. `compile` writes only on success; an existing output is left unchanged
-on failure. Generation does not run Xcode. Add the generated component to a native
-app to display it; application packaging is not implemented yet.
+on failure. Generation does not run Xcode. A native reference harness is available
+below; general application packaging is not implemented yet.
+
+## Native reference apps
+
+```sh
+npm run svelocity -- native prepare
+npm run svelocity -- native build --platform ios --dry-run
+# On macOS with full Xcode 16+:
+npm run svelocity -- native run --platform macos
+npm run svelocity -- native run --platform ios
+npm run svelocity -- native test --platform macos
+npm run svelocity -- native benchmark --platform macos --variant handwritten
+```
+
+The harness builds generated and handwritten variants of the same greeting UI for
+macOS and iOS Simulator. Benchmarks require Release builds, retaining XCTest result
+bundles and run metadata. See [native development](docs/arcitecture/native.md) for
+paired smoke tests, measurements, requirements, and limitations. Native execution
+and baseline results remain unverified in this Linux environment.
 
 ## Current subset
 
@@ -59,8 +77,9 @@ declarations with `npm run svelocity -- bindings --out generated/native.d.ts`.
 `npm run check` checks the compiler's TypeScript. `npm test` covers generation,
 unsupported constructs, source locations, CLI behavior, file watching, and the
 language server over stdio. On macOS with Xcode, it also typechecks generated views
-against the macOS and iOS Simulator SDKs; these two checks are skipped on Linux.
-CI is configured for Linux and macOS. Native application behavior and performance
-still need runtime validation.
+against the macOS and iOS Simulator SDKs and checks Xcode project discovery; these
+three checks are skipped on Linux. CI also includes native UI smoke tests and Release
+measurements for both variants/platforms. Native application behavior and performance
+still need actual Apple-platform validation.
 
 [Architecture](docs/arcitecture/README.md) · [Decisions](docs/adr/README.md) · [Roadmap](docs/roadmap.md)

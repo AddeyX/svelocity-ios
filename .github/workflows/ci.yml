@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     strategy:
@@ -15,3 +15,34 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm test
+  native:
+    name: Native (${{ matrix.platform }})
+    runs-on: macos-15
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos, ios]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Generated UI smoke test
+        run: npm run svelocity -- native test --platform ${{ matrix.platform }} --variant generated
+      - name: Handwritten UI smoke test
+        run: npm run svelocity -- native test --platform ${{ matrix.platform }} --variant handwritten
+      - name: Generated Release measurements
+        run: npm run svelocity -- native benchmark --platform ${{ matrix.platform }} --variant generated
+      - name: Handwritten Release measurements
+        run: npm run svelocity -- native benchmark --platform ${{ matrix.platform }} --variant handwritten
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-results-${{ matrix.platform }}
+          path: generated/native/results/
+          if-no-files-found: warn
+          retention-days: 14

@@ -2,9 +2,21 @@ import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { test } from 'node:test';
 import { compile } from '../src/index.js';
+
+test('Xcode reads the shared native project and discovers both app schemes', {
+  skip: process.platform !== 'darwin' ? 'Requires macOS and Xcode.' : false,
+}, () => {
+  const project = resolve('examples/native/SvelocityDemo.xcodeproj');
+  execFileSync('plutil', ['-lint', join(project, 'project.pbxproj')]);
+  const output = execFileSync('xcodebuild', ['-list', '-json', '-project', project], { encoding: 'utf8' });
+  const parsed = JSON.parse(output) as { project: { schemes: string[]; targets: string[] } };
+  assert.ok(parsed.project.schemes.includes('SvelocityGenerated'));
+  assert.ok(parsed.project.schemes.includes('SvelocityHandwritten'));
+  assert.equal(parsed.project.targets.length, 4);
+});
 
 for (const platform of ['macos', 'ios'] as const) {
   test(`generated SwiftUI typechecks against the ${platform} SDK`, {

@@ -11,6 +11,7 @@ code and tests. Accepted decisions may precede implementation.
 - [0003: Share compatibility analysis across tools](0003-share-compatibility-analysis.md)
 - [0004: Derive routes from folders](0004-use-folder-routing.md)
 - [0005: Start with an explicit native authoring subset](0005-start-with-an-explicit-native-subset.md)
+- [0006: Validate native apps with a shared Xcode harness](0006-validate-native-apps-with-a-shared-xcode-harness.md)
 
 ## When to write one
 

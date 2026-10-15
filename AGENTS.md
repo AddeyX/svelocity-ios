@@ -15,6 +15,7 @@ work crosses that boundary. Until implementation exists, treat design as intent.
 - Swift APIs, native components, modifiers, or platform availability -> [docs/arcitecture/bindings.md](docs/arcitecture/bindings.md).
 - Language server, diagnostics, or continuous checking -> [docs/arcitecture/language.md](docs/arcitecture/language.md).
 - Routes, layouts, or native navigation -> [docs/arcitecture/routing.md](docs/arcitecture/routing.md).
+- Native app hosts, Xcode builds, UI smoke tests, or measurements -> [docs/arcitecture/native.md](docs/arcitecture/native.md).
 - Architectural decisions or their rationale -> [docs/adr/README.md](docs/adr/README.md), then the relevant ADRs.
 - Module/interface design, test seams, or deepening a module -> [.agents/skills/codebase-design/SKILL.md](.agents/skills/codebase-design/SKILL.md).
 - Making or revising an architectural decision -> [.agents/skills/architecture-decisions/SKILL.md](.agents/skills/architecture-decisions/SKILL.md).

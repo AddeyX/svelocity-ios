@@ -20,8 +20,9 @@ output is not the native backend.
   [binding system](bindings.md). A small Swift library may provide shared behavior.
 - Pass generated output to the Apple toolchain for native compilation and validation.
 
-The initial CLI stops at source generation. Native compilation is currently a
-separate test step on macOS; it does not yet produce an application bundle.
+The `compile` command stops at source generation. The separate
+[native harness](native.md) prepares the reference view and invokes Xcode to build
+or test the demo apps; actual native execution is still unverified in this Linux task.
 
 ## Semantic contract
 

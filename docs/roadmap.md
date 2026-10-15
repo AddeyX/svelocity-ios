@@ -19,6 +19,11 @@ compilation, application behavior, or performance.
 
 ## 1. Prove native execution
 
+**Progress:** the [native reference harness](arcitecture/native.md), build/run
+commands, shared UI tests, and Release measurement sources are implemented.
+Preparation and command planning are validated on Linux. Native project loading,
+builds, UI runs, and measured baselines remain pending on macOS/Xcode.
+
 Build minimal iOS and macOS app hosts, native build/run commands, UI smoke tests,
 and equivalent handwritten SwiftUI examples. Establish the Apple-platform feedback
 loop before expanding language coverage. Start with rebuild/relaunch behavior;
@@ -113,5 +118,6 @@ treat this roadmap as a promise of automatic support for every Swift construct.
 
 A small notes application is the suggested reference project: it can grow from
 state and lists into routing, persistence, search, asynchronous work, and multiple
-windows. The reference application has not been selected. Phase 1 is the
-recommended next milestone; detailed tasks and estimates remain to be determined.
+windows. The reference application has not been selected. Phase 1 is in progress;
+its next gate is actual Apple-platform validation. Later tasks and estimates remain
+to be determined.

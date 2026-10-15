@@ -3,3 +3,4 @@ dist/
 .cache/
 generated/
 .DS_Store
+xcuserdata/
