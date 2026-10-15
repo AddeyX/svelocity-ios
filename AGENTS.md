@@ -10,6 +10,7 @@ do not read every document for every task. Follow additional links only when the
 work crosses that boundary. Until implementation exists, treat design as intent.
 
 - Architecture overview or work across subsystems -> [docs/arcitecture/README.md](docs/arcitecture/README.md).
+- Phased planning, milestone scope, or completion criteria -> [docs/roadmap.md](docs/roadmap.md).
 - Compiler, supported language, reactivity, or Swift generation -> [docs/arcitecture/compiler.md](docs/arcitecture/compiler.md).
 - Swift APIs, native components, modifiers, or platform availability -> [docs/arcitecture/bindings.md](docs/arcitecture/bindings.md).
 - Language server, diagnostics, or continuous checking -> [docs/arcitecture/language.md](docs/arcitecture/language.md).

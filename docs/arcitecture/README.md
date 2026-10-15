@@ -31,6 +31,7 @@ Swift, without a JavaScript engine. SwiftUI owns rendering and view updates.
 - [Language tooling](language.md): continuous analysis and editor feedback.
 - [Routing](routing.md): folders, typed routes, and native presentation.
 - [ADRs](../adr/README.md): high-level decisions and their rationale.
+- [Roadmap](../roadmap.md): proposed phases and completion criteria.
 
 The [initial subset decision](../adr/0005-start-with-an-explicit-native-subset.md)
 defines the first authoring contract. Still open: broader language semantics,

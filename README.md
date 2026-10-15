@@ -63,4 +63,4 @@ against the macOS and iOS Simulator SDKs; these two checks are skipped on Linux.
 CI is configured for Linux and macOS. Native application behavior and performance
 still need runtime validation.
 
-[Architecture](docs/arcitecture/README.md) · [Decisions](docs/adr/README.md)
+[Architecture](docs/arcitecture/README.md) · [Decisions](docs/adr/README.md) · [Roadmap](docs/roadmap.md)
